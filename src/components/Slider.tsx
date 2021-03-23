@@ -14,7 +14,7 @@ SwiperCore.use([Navigation, Keyboard, A11y, Controller, Autoplay])
 
 const Container = styled.div`
   width: 100%;
-  height: 500px;
+  height: 400px;
   padding: 2rem 0;
   overflow: hidden;
 `
