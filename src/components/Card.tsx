@@ -1,4 +1,3 @@
-import { HTMLProps } from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -76,7 +75,7 @@ const InfoWrapper = styled.div`
   }
 `
 
-export interface CardProps extends HTMLProps<HTMLDivElement> {
+export interface CardProps {
   title: string
   description: string
   online?: boolean
