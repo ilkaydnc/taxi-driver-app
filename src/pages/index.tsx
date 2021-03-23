@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Slider from '@components/Slider'
+import Slider, { ItemsProps } from '@components/Slider'
 import { NextPage } from 'next'
 import styled from 'styled-components'
 
@@ -11,6 +11,29 @@ const Iphone = styled.div`
   border-radius: 20px;
 `
 
+const items: ItemsProps[] = [
+  {
+    title: 'Daewoo Lanos',
+    description: '$9,99 for 5 min, after $0,99 min',
+    status: 'online',
+  },
+  {
+    title: 'Daewoo Lanos',
+    description: '$9,99 for 5 min, after $0,99 min',
+    status: 'busy',
+  },
+  {
+    title: 'Daewoo Lanos',
+    description: '$9,99 for 5 min, after $0,99 min',
+    status: 'online',
+  },
+  {
+    title: 'Daewoo Lanos',
+    description: '$9,99 for 5 min, after $0,99 min',
+    status: 'busy',
+  },
+]
+
 const IndexPage: NextPage = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0)
 
@@ -19,7 +42,7 @@ const IndexPage: NextPage = () => {
   return (
     <main>
       <Iphone>
-        <Slider setActiveIndex={setActiveIndex} />
+        <Slider setActiveIndex={setActiveIndex} items={items} />
       </Iphone>
     </main>
   )

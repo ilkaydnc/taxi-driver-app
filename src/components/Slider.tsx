@@ -8,7 +8,7 @@ import SwiperCore, {
   Autoplay,
 } from 'swiper'
 
-import Card from '@components/Card'
+import Card, { CardProps } from '@components/Card'
 
 SwiperCore.use([Navigation, Keyboard, A11y, Controller, Autoplay])
 
@@ -20,11 +20,16 @@ const Container = styled.div`
   overflow: hidden;
 `
 
-interface SliderProps {
-  setActiveIndex: { (v: number): void }
+export interface ItemsProps extends CardProps {
+  status: 'online' | 'busy'
 }
 
-const Slider = ({ setActiveIndex }: SliderProps) => {
+interface SliderProps {
+  setActiveIndex: { (v: number): void }
+  items: ItemsProps[]
+}
+
+const Slider = ({ setActiveIndex, items }: SliderProps) => {
   return (
     <Container>
       <Swiper
@@ -34,26 +39,15 @@ const Slider = ({ setActiveIndex }: SliderProps) => {
         keyboard
         onSlideChange={e => setActiveIndex(e.realIndex)}
       >
-        <SwiperSlide onProgress={e => console.log(e)}>
-          <Card
-            title="Daewoo Lanos"
-            description="$9,99 for 5 min, after $0,99 min"
-            online
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            title="Daewoo Lanos"
-            description="$9,99 for 5 min, after $0,99 min"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            title="Daewoo Lanos"
-            description="$9,99 for 5 min, after $0,99 min"
-            online
-          />
-        </SwiperSlide>
+        {items.map(({ title, description, status }, index) => (
+          <SwiperSlide key={index} onProgress={e => console.log(e)}>
+            <Card
+              title={title}
+              description={description}
+              online={status === 'online'}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </Container>
   )
