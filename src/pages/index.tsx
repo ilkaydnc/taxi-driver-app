@@ -78,8 +78,6 @@ const IndexPage: NextPage = () => {
     },
   ])
 
-  console.log(activeIndex)
-
   const changeStatus = (status: boolean) => {
     setItems(prevItems =>
       prevItems.map((item, index) => {
