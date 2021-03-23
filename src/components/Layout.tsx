@@ -29,6 +29,33 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
+
+  .swiper-container {
+    overflow: unset !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    height: 100%;
+  }
+
+  .swiper-slide,
+  .swiper-slide-active{
+    transform: rotate(0) translate(0, 0);
+    transition: 0.3s;
+  }
+
+  .swiper-slide-next {
+    opacity: 0.8;
+    transform: rotate(5deg) translate(10px, 20px);
+    transition: 0.3s;
+    transform-origin: 50% 50%;
+  }
+
+  .swiper-slide-prev {
+    opacity: 0.8;
+    transform: rotate(-5deg) translate(-10px, 20px);
+    transition: 0.3s;
+    transform-origin: 50% 50%;
+  }
 `
 
 interface Props {
