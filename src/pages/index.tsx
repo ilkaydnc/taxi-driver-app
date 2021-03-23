@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Slider from '@components/Slider'
 import { NextPage } from 'next'
 import styled from 'styled-components'
+import Switch from '@components/Switch'
 
 const Iphone = styled.div`
   position: relative;
@@ -19,6 +20,7 @@ const LightEffects = styled.div<{ online: boolean }>`
   left: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
 
   &::before {
     content: '';
@@ -53,7 +55,7 @@ type Items = {
 
 const IndexPage: NextPage = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0)
-  const [items] = useState<Items[]>([
+  const [items, setItems] = useState<Items[]>([
     {
       title: 'Daewoo Lanos',
       description: '$9,99 for 5 min, after $0,99 min',
@@ -78,11 +80,26 @@ const IndexPage: NextPage = () => {
 
   console.log(activeIndex)
 
+  const changeStatus = (status: boolean) => {
+    setItems(prevItems =>
+      prevItems.map((item, index) => {
+        if (index === activeIndex) {
+          item.status = status ? 'online' : 'busy'
+        }
+        return item
+      })
+    )
+  }
+
   return (
     <main>
       <Iphone>
         <LightEffects online={items[activeIndex].status === 'online'} />
         <Slider setActiveIndex={setActiveIndex} items={items} />
+        <Switch
+          online={items[activeIndex].status === 'online'}
+          changeStatus={changeStatus}
+        />
       </Iphone>
     </main>
   )
