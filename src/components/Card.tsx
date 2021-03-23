@@ -6,7 +6,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 300px;
   background-color: white;
   border-radius: 10px;
   padding: 1rem 2rem;
@@ -31,8 +30,8 @@ const Title = styled.h2`
 
 const Description = styled.span`
   margin: 0;
-  font-size: 14;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 400;
   color: #727272;
 `
 
