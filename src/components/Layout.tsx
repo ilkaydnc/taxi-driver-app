@@ -42,13 +42,19 @@ export const GlobalStyle = createGlobalStyle`
     overflow: unset !important;
     overflow-x: hidden !important;
     overflow-y: hidden !important;
-    height: 100%;
+    height: 400px;
+    padding-top: 100px;
   }
 
   .swiper-slide,
-  .swiper-slide-active{
+  .swiper-slide-active {
     transform: rotate(0) translate(0, 0);
     transition: 0.3s;
+  }
+
+  .swiper-slide-active > div {
+    box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
   }
 
   .swiper-slide-next {

@@ -2,6 +2,7 @@ import { HTMLProps } from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,6 +10,8 @@ const Container = styled.div`
   background-color: white;
   border-radius: 10px;
   padding: 1rem 2rem;
+  transition: 0.5s;
+  cursor: pointer;
 `
 
 const ImageWrapper = styled.div`
@@ -73,7 +76,7 @@ const InfoWrapper = styled.div`
   }
 `
 
-interface CardProps extends HTMLProps<HTMLDivElement> {
+export interface CardProps extends HTMLProps<HTMLDivElement> {
   title: string
   description: string
   online?: boolean
