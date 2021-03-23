@@ -20,7 +20,11 @@ const Container = styled.div`
   overflow: hidden;
 `
 
-const Slider = () => {
+interface SliderProps {
+  setActiveIndex: { (v: number): void }
+}
+
+const Slider = ({ setActiveIndex }: SliderProps) => {
   return (
     <Container>
       <Swiper
@@ -28,9 +32,7 @@ const Slider = () => {
         slidesPerView={1.4}
         centeredSlides
         keyboard
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={swiper => console.log(swiper)}
-        onAnimationIteration={e => console.log(e)}
+        onSlideChange={e => setActiveIndex(e.realIndex)}
       >
         <SwiperSlide onProgress={e => console.log(e)}>
           <Card
